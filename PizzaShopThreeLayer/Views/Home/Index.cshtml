@@ -1,0 +1,91 @@
+﻿@using System.Collections
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .IndexPage {
+        color: red !important;
+
+    }
+     #divHeaderLine1 {
+         color: #F752AA !important;
+         margin-top: 10px !important;
+     }
+</style>
+<div id="decorative1" style="position:relative">
+    <div class="container">
+
+        <div class="divPanel headerArea">
+            <div class="row-fluid">
+                <div class="span12">
+
+                    <div id="headerSeparator"></div>
+
+                    <div class="row-fluid">
+                        <div class="span6">
+
+                            <div id="divHeaderText" class="page-content">
+                                <div id="divHeaderLine1">При покупке двух пицц третья в подарок!</div><br />
+                         
+                            </div>
+
+                        </div>
+                        <div class="span6">
+                            <!--Edit Camera Slider here-->
+                            <div id="camera_wrap">
+                                @foreach (var image in @Model)
+                                {
+                                    <div data-src=@Url.Content(@image.Absolutepath)>
+                                        <div class="camera_caption fadeFromBottom cap1">@image.Name</div>
+                                    </div>
+                                   
+                                }
+                                </div>
+                            <!--End Camera Slider here-->
+
+                        </div>
+                    </div>
+
+                    <div id="headerSeparator2"></div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="divPanel page-content">
+        <!--Edit Main Content Area here-->
+        <div class="row-fluid">
+
+            <div class="span12" id="divMain">
+
+                <h1>Доставка пиццы в Минске</h1>
+
+                <p>Для нас важны постоянные клиенты, поэтому мы с большим трепетом относимся к сохранению рецептуры
+                    итальянской пиццы. Благодаря новейшему оборудованию, при быстрой термической обработке все ингредиенты сохраняют
+                    большинство своих витаминов и полезных минералов. Так получается не только аппетитная пицца, но также и полезная.
+                    В любое время заказанная Вами пицца будет прекрасным гастрономическим наслаждением, которое оставит только хорошее
+                 впечатление, а наша доставка по Минску, позволит это сделать менее чем через час.</p>
+
+            </div>
+
+        </div>
+        <!--End Main Content Area here-->
+
+        <div id="footerInnerSeparator"></div>
+    </div>
+
+</div>
+
+@section Footer {
+  
+}
+
+

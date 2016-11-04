@@ -1,0 +1,180 @@
+﻿
+@{
+    ViewBag.Title = "AllOrders";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #order {
+        float: right !important;
+        margin-right: -130px!important
+        
+    }
+    img {
+        width: 100px !important;
+        height: 100px!important
+    }
+    .spanMargin {
+        margin-left: 20px !important;
+    }
+
+    .inline {
+        display: inline !important;
+    }
+
+    #NumberOfHouse, #Housing, #Apartment {
+        width: 50px !important;
+        display: inline !important;
+    }
+    
+    #Street {
+        width: 500px !important;
+    }
+    .link,.number,.ProductPrice,.name {
+        line-height: 100px !important;
+    }
+    .pull-right {
+        margin-right: 150px!important
+    }
+    
+
+    .text {
+        display: block !important;
+    }
+
+    .spanFirst {
+        margin-left: 0 !important;
+    }
+</style>
+<div class="container">
+
+    <br /><br />
+    <div class="hero-unit">
+        <table class="table">
+            <thead>
+            <tr>
+                <th></th>
+                <th>Название</th>
+
+                <th>Цена</th>
+                <th>Количество</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+
+            @foreach (var mod in @Model)
+            {
+                <tr id="@mod.Id.ToString()">
+                    <td><img src=@Url.Content(@mod.Product.Absolutepath) alt="Christmas" title="Christmas"/></td>
+                    <td class="name">@mod.Product.Name</td>
+
+                    <td class="ProductPrice">@mod.Product.Price</td>
+                    <td class="number">
+                        <input type="number" value=@mod.Quantity min="1" max="10" style="width: 35px"/>
+
+                    </td>
+                    <td class="link">@Ajax.ActionLink("Удалить", "Remove", new {ide = @mod.Id.ToString(), Controller = "Cart"}, new AjaxOptions {UpdateTargetId = @mod.Id.ToString()}, new {@class = "btn"})</td>
+                </tr>
+
+            }
+
+
+
+            </tbody>
+
+        </table>
+        <p class="pull-right">Итого:</p>
+
+        <br/>
+
+        <button id="order" class="btn btn-info btn-lg" type="button" data-toggle="modal" data-target="#myModal">Оформить заказ</button>
+        
+
+        
+        <div id="myModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" type="button" data-dismiss="modal">×</button>
+                        <h4 class="modal-title">Оформление заказа</h4>
+                    </div>
+                    <div class="modal-body">
+                        @using (Ajax.BeginForm("MakeOrder", new { Controller = "Order" }, new AjaxOptions
+                    {
+                        UpdateTargetId = "order"
+                    }))
+                        {
+
+                            <h5>Имя*</h5>
+                            @Html.TextBox("Name")
+                            <h5>Контактный телефон</h5>
+                            @Html.TextBox("PhoneNumber")
+                            <h5>Время получения заказа</h5>
+                            <h5 class="inline">От</h5>
+                            <select name="from">
+                                <option selected="selected">10</option>
+                                <option>11</option>
+                                <option>12</option>
+                                <option>13</option>
+                                <option>14</option>
+                                <option>15</option>
+                                <option>16</option>
+                                <option>17</option>
+                                <option>18</option>
+                                <option>19</option>
+                                <option>20</option>
+                                <option>21</option>
+                                <option>22</option>
+                                <option>23</option>
+                            </select>
+                            <h5 class="inline">До</h5>
+                            <select name="to">
+                                <option>10</option>
+                                <option>11</option>
+                                <option>12</option>
+                                <option>13</option>
+                                <option>14</option>
+                                <option>15</option>
+                                <option>16</option>
+                                <option>17</option>
+                                <option>18</option>
+                                <option>19</option>
+                                <option>20</option>
+                                <option>21</option>
+                                <option>22</option>
+                                <option>23</option>
+                            </select>
+                            <h5>Улица</h5>
+                            <p>@Html.TextBox("Street")</p>
+                            <span class="spanFirst"> <span class="text">Номер дома</span> @Html.TextBox("NumberOfHouse", null, new { type = "number" })</span>
+
+                            <span class="spanMargin">
+                                <span class="text">Корпус</span> @Html.TextBox("Housing")
+                            </span>
+                            <span class="spanMargin">
+                                <span class="text">Квартира</span> @Html.TextBox("Apartment", null, new { type = "number" })
+                            </span>
+
+
+                            <br />
+                            <br />
+                            <br />
+                            <input type="submit" class="btn btn-default pull-right" value="Оформить заказ" />
+
+
+                        }
+
+                    </div>
+                    <div class="modal-footer"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+@section Footer {
+
+}

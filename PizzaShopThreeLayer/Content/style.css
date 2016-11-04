@@ -1,0 +1,41 @@
+﻿.list_carousel {}
+.list_carousel ul {
+    margin: 0;
+	padding: 0;
+	list-style: none;
+	display: block;
+}
+.list_carousel li {
+	margin: 10px;
+    height:150px;
+	display: block;
+	float: left;
+}
+.list_carousel.responsive {
+	width: auto;
+	margin-left: 0;
+}
+.size-img {
+    width: 220px; 
+}
+.field-validation-error {
+    color: #f00;
+}
+ 
+.field-validation-valid {
+    display: none;
+}
+ 
+.input-validation-error {
+    border: 1px solid #f00;
+    background-color: #f00;
+}
+ 
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+ 
+.validation-summary-valid {
+    display: none;
+}

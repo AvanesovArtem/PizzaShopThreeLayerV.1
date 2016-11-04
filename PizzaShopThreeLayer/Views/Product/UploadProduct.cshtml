@@ -1,0 +1,53 @@
+﻿
+@model PizzaShopThreeLayer.Models.UploadProductViewModel
+
+  
+
+@{
+    ViewBag.Title = "UploadProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    #divMain {
+        width: 200px;
+        margin: 50px auto;
+    }
+</style>
+
+<div id="divMain">
+    @*@Html.ValidationSummary()*@
+    @{Html.EnableClientValidation();}
+    @{Html.EnableUnobtrusiveJavaScript();}
+    @using (Html.BeginForm("AddProduct", "Product", FormMethod.Post, new {enctype = "multipart/form-data", id = "FormUpload"}))
+    {
+
+
+        <div class="form-group">
+           @Html.EditorForModel()
+            <input id="Image" type="file" accept="image/*" name="Image"/>
+    
+            <a href="https://dl.dropboxusercontent.com/s/deroi5nwm6u7gdf/advice.png" class="dropbox-saver"></a>
+       
+        </div>
+      
+        <div class="form-group">
+
+
+        </div>
+        <div id="resultDiv">
+        
+        </div>
+        <button type="submit" class="btn btn-success" id="submit">Отправить на сервер</button>
+    }
+
+
+</div>
+
+
+}
+
+
+@section Footer{
+
+}
+

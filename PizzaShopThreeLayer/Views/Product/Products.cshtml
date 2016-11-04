@@ -1,0 +1,58 @@
+﻿
+
+@{
+    ViewBag.Title = "Products";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th>Описание</th>
+                <th>Цена</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var mod in @Model)
+            {
+                <tr id="@mod.Id.ToString()">
+                    <td>@mod.Name</td>
+                    <td>@mod.Description</td>
+                    <td>@mod.Price</td>
+                    <td>@Html.ActionLink("Изменить", "Edit", new { ide = mod.Id })</td>
+
+                    <td>
+                        @Ajax.ActionLink("Удалить", "Remove", new
+        {
+            ide = @mod.Id.ToString(),
+            Controller = "Product"
+        }, new AjaxOptions { UpdateTargetId = @mod.Id.ToString() }, new { @class = "btn" })
+                    </td>
+                </tr>
+
+            }
+
+
+        </tbody>
+    </table>
+</div>
+
+
+@section Footer {
+
+}
+
+
+
+
+
+
+
+
+
+

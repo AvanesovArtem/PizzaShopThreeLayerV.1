@@ -1,0 +1,28 @@
+﻿
+<ul id="tiles">
+
+    @foreach (var image in @Model)
+    {
+
+        <li style="height: 400px !important">
+            <h5><strong>@image.Name</strong></h5>
+            <img src=@Url.Content(@image.Absolutepath) alt="Christmas" title="Christmas" />
+
+
+            <h6 style="height: 80px !important; overflow: hidden !important">@Url.Content(image.Description)</h6>
+            <h4> <strong>@image.Price руб</strong></h4>
+            <p>
+                <div id=@image.Id.ToString()>
+                    @Ajax.ActionLink("Добавить в корзину", "AddToCart", new { id = @image.Id, Controller = "Cart" }, new AjaxOptions { UpdateTargetId = @image.Id.ToString() }, new { role = "button", @class = "btn btn-primary btn-xs" })
+                </div>
+
+            </p>
+
+
+
+        </li>
+
+    }
+
+
+</ul>

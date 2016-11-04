@@ -1,0 +1,16 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+    { 
+  
+            <li>@Html.ActionLink("Настройки", "Index", "Home")</li>
+            <li class="dropdown">@Html.ActionLink("Выйти", "Logout", "Account")</li>
+
+    }
+
+else
+    {
+
+         <li class="dropdown">@Html.ActionLink("Регистрация", "Register", "Account")</li>
+         <li class="dropdown">@Html.ActionLink("Выполнить вход", "Login", "Account")</li>
+    
+    }

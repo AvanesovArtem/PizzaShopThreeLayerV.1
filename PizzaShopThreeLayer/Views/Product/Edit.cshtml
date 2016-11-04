@@ -1,0 +1,42 @@
+﻿@model PizzaShopThreeLayer.Models.ProductViewModel
+
+@{
+    ViewBag.Title = "Products";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    #divMain {
+        width: 200px;
+        margin: 50px auto;
+    }
+</style>
+<div id="divMain">
+          @Html.ValidationSummary(true)
+        @Html.HiddenFor(x => x.Absolutepath)
+        <div class="form-group">
+            @Html.LabelFor(x => x.Name, "Название продкута")
+            @Html.TextBoxFor(x => x.Name, new { placeholder = "Введите название" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.Description, "Описание продукта")
+            @Html.TextAreaFor(x => x.Description, new { placeholder = "Введите описание" })
+            @Html.ValidationMessageFor(x => x.Description)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.Price, "Цена")
+            @Html.TextAreaFor(x => x.Price, new { placeholder = "Введите цену" })
+        </div>
+
+        <button type="submit" class="btn btn-success" id="submit">Сохранить изменения</button>
+    }
+
+
+</div>
+@section Footer{
+
+}
+
+
+
+
+
